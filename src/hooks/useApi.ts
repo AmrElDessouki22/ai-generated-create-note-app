@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-function useApi(url: string) {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
+export function useApi<T>(url: string) {
+  const [data, setData] = useState<T | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
@@ -14,8 +14,8 @@ function useApi(url: string) {
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
-        const data = await response.json()
-        setData(data)
+        const result = await response.json()
+        setData(result)
       } catch (error) {
         setError(error as Error)
       } finally {
@@ -28,5 +28,3 @@ function useApi(url: string) {
 
   return { data, loading, error }
 }
-
-export default useApi
