@@ -1,17 +1,17 @@
-import Header from '@/components/ui/Header';
-import Sidebar from '@/components/ui/Sidebar';
-import NotesList from '@/components/notes/NotesList';
+import Header from '@/components/ui/Header'
+import Footer from '@/components/ui/Footer'
+import NoteList from '@/components/notes/NoteList'
+import AddNoteForm from '@/components/notes/AddNoteForm'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 p-6">
-          <NotesList />
-        </main>
-      </div>
+      <main className="flex-1 container mx-auto p-4">
+        <AddNoteForm />
+        <NoteList />
+      </main>
+      <Footer />
     </div>
-  );
+  )
 }
