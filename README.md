@@ -1,2 +1,3 @@
-# ai-generated-create-note-app
-AI Generated Next.js Project: AI Generated: create note app...
+### Core Configuration Files
+
+**package.json**
