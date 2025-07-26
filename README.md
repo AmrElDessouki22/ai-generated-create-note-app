@@ -1,3 +1,3 @@
-### Core Configuration Files
+### Core Config Files
 
-**package.json**
+#### package.json
