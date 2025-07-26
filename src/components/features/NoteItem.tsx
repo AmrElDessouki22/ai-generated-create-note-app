@@ -1,8 +1,23 @@
-export default function NoteItem() {
+import { Note } from '@/types'
+import { useNotes } from '@/contexts/NotesContext'
+
+interface NoteItemProps {
+  note: Note
+}
+
+export default function NoteItem({ note }: NoteItemProps) {
+  const { deleteNote } = useNotes()
+
   return (
-    <div>
-      <h2>NoteItem</h2>
-      <p>Component content here</p>
-    </div>
-  );
+    <li className="mb-4 p-4 border rounded shadow">
+      <h3 className="text-xl font-bold">{note.title}</h3>
+      <p>{note.content}</p>
+      <button 
+        onClick={() => deleteNote(note.id)}
+        className="text-red-500 mt-2"
+      >
+        Delete
+      </button>
+    </li>
+  )
 }
