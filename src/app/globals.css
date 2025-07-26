@@ -1,19 +1,11 @@
-import './globals.css';
-import { NotesProvider } from '@/contexts/NotesContext';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-export const metadata = {
-  title: 'Note App',
-  description: 'A feature-rich note-taking application',
-};
+body {
+  @apply bg-gray-50 text-gray-900;
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>
-        <NotesProvider>
-          {children}
-        </NotesProvider>
-      </body>
-    </html>
-  );
+.container {
+  @apply max-w-3xl mx-auto;
 }
