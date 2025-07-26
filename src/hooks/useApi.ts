@@ -2,22 +2,27 @@
 
 import { useState, useEffect } from 'react'
 
-export function useApi<T>(url: string) {
+interface ApiResponse<T> {
+  data: T | null
+  error: string | null
+  loading: boolean
+}
+
+export function useApi<T>(url: string): ApiResponse<T> {
   const [data, setData] = useState<T | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       try {
         const response = await fetch(url)
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
+        if (!response.ok) throw new Error('Network response was not ok')
         const result = await response.json()
         setData(result)
-      } catch (error) {
-        setError(error as Error)
+      } catch (err) {
+        setError((err as Error).message)
       } finally {
         setLoading(false)
       }
@@ -26,5 +31,5 @@ export function useApi<T>(url: string) {
     fetchData()
   }, [url])
 
-  return { data, loading, error }
+  return { data, error, loading }
 }
