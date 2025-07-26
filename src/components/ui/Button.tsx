@@ -1,5 +1,6 @@
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
@@ -8,6 +9,7 @@ interface ButtonProps {
 
 export default function Button({ 
   variant = 'primary', 
+  size = 'md', 
   children, 
   onClick, 
   disabled = false,
@@ -21,11 +23,17 @@ export default function Button({
     ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500'
   };
   
+  const sizes = {
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg'
+  };
+  
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variants[variant]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
+      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
     >
       {children}
     </button>
