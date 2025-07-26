@@ -6,14 +6,20 @@ interface InputProps {
   className?: string;
 }
 
-export default function Input({ type = 'text', value, onChange, placeholder = '', className = '' }: InputProps) {
+export default function Input({
+  type = 'text',
+  value,
+  onChange,
+  placeholder = '',
+  className = '',
+}: InputProps) {
   return (
     <input
       type={type}
       value={value}
       onChange={onChange}
+      className={`border rounded-md p-2 ${className}`}
       placeholder={placeholder}
-      className={`border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500 ${className}`}
     />
   )
 }
