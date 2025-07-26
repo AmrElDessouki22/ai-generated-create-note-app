@@ -1,7 +1,12 @@
 'use client'
 
 import { createContext, useContext, useState, ReactNode } from 'react'
-import { Note } from '@/types'
+
+interface Note {
+  id: string
+  title: string
+  content: string
+}
 
 interface NotesContextType {
   notes: Note[]
