@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import { useNotes } from '@/contexts/NotesContext'
-import Input from '../ui/Input'
-import Button from '../ui/Button'
+import Input from '@/components/ui/Input'
+import Button from '@/components/ui/Button'
 
 export default function AddNoteForm() {
-  const { addNote } = useNotes()
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const { addNote } = useNotes()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,17 +25,17 @@ export default function AddNoteForm() {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Note title"
-        className="mb-2 w-full"
+        placeholder="Title"
+        className="mb-2"
       />
       <Input
         type="text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Note content"
-        className="mb-2 w-full"
+        placeholder="Content"
+        className="mb-2"
       />
-      <Button type="submit" className="bg-blue-500 text-white">
+      <Button type="submit" variant="primary">
         Add Note
       </Button>
     </form>
