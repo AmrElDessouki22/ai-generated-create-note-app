@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-50 text-gray-900;
-}
-
-.container {
-  @apply max-w-3xl mx-auto;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
 }
